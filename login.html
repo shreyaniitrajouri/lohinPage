@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+<STYLE>
+#button{
+margin-left:50px;
+}
+.autostyle2{
+color:red;
+font-size:20px;
+text-align:center;
+}
+</STYLE>
+<script>
+var valid=function(){
+	var user = document.forms["login"]["user"].value;
+	var pass = document.forms["login"]["pass"].value;
+	if(user=='user1' && pass=='pass1')
+		return true;
+	else{
+		alert('Username and password incorrect');
+		return false;
+	}
+}
+</script>
+</head>
+<body bgcolor="#FFEBCD">
+<form  name="login" action="transaction.html" onsubmit="return valid()">
+<table>
+<TR class="autostyle2"> 
+<TD colspan="2">LogIn Page</TD></TR>
+<TR>
+<TD WIDTH="100%" COLSPAN="2">
+</TD>
+</TR>
+
+<tr><td>Enter Username</td>
+<td><input name="user"></td></tr>
+<tr><td>Enter password</td>
+<td><input name="pass" type="password"></td></tr>
+<tr><td clospan="2"><input type="submit"></td>
+<td clospan="2"><input type="reset"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

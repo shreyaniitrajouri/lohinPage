@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body bgcolor="#FFEBCD">
+<div id="here"></div>
+</body>
+<script>
+window.onload = function () {
+		var idx = document.URL.indexOf('?');
+        params = document.URL.substring(idx+1, document.URL.length).split('&');
+		var data = {}, tmp;
+		document.write("<table border='2'>");
+		document.write("<tr><th colspan='2'><center>INVOICE</center></th></tr>");
+		var quan,price,country,total,discount;
+    for (var i = 0; i < params.length; i++) {
+         tmp = params[i].split('=');
+		 if(tmp[0]=='ProductQuantity')
+		 quan=tmp[1];
+		 else if(tmp[0]=='Productprice')
+		 price=tmp[1];
+		 else if(tmp[0]=='CustomerCountry')
+		 country=tmp[1];
+		 if(tmp[0]=='ProductName'||tmp[0]=='CustomerName')
+		 document.write("<tr><td>"+tmp[0]+"</td><td>"+tmp[1]+"</td></tr>");
+    }
+	var total=parseInt(price)*parseInt(quan);
+		 document.write("<tr><td>TotalPrice</td><td>"+total+"</td></tr>");
+		discount=total;
+		if(total>10000 && country=='INDIA')
+			discount=total-(total*0.1);
+		else if(total>10000 && country=='USA')
+			discount=total-(total*0.05);
+		 document.write("<tr><td>TotalPayablePrice</td><td>"+discount+"</td></tr>");	
+		document.write("</table>");
+   
+}
+</script>
+
+</html>
